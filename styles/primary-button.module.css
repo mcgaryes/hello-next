@@ -1,0 +1,10 @@
+.container {
+    padding: 1em;
+    background-color: blueviolet;
+    font-size: 1em;
+    margin: 0;
+}
+
+.container:hover {
+    background-color: #9730f8;
+}
