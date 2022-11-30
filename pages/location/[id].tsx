@@ -47,7 +47,7 @@ export default function BrewPub(props: GetStaticProps<any>) {
         <>
 
             <Head>
-                <title>Local Beer - {location.name}</title>
+                <title>{`Local Beer - ${location.name.toString()}`}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
