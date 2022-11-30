@@ -3,7 +3,7 @@ export interface Location {
     name: string
     description: string
     website: string
-    image?: string
+    images: string[]
     rating: number
     address: string
 }

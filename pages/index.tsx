@@ -46,7 +46,7 @@ export default function Home(props: GetStaticProps) {
                                   id={location.id}
                                   rating={location.rating}
                                   title={location.name}
-                                  image={location.image}/>
+                                  image={location.images[0]}/>
 
                         ))
                     }

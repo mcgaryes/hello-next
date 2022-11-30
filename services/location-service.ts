@@ -22,15 +22,12 @@ export class LocationService {
 
         return axiosResponse.data.results.map((result: any) => {
 
-            let image: string | undefined;
-
-            if (result.photos.length > 0) {
-                let photo = result.photos[0];
+            const images: string[] = result.photos.map((photo: any) => {
                 let prefix = photo.prefix
                 let suffix = photo.suffix
-                let size = `${1170}x${600}`
-                image = `${prefix}${size}${suffix}`
-            }
+                let size = `${photo.width}x${photo.height}`
+                return `${prefix}${size}${suffix}`
+            })
 
             /*
             {
@@ -53,7 +50,7 @@ export class LocationService {
                 id: result.fsq_id,
                 website: result.website ?? "",
                 name: result.name,
-                image: image ?? "",
+                images,
                 description: result.description ?? "No description.",
                 rating: Math.round((result.rating ?? 0) / 2),
                 address: result.location.formatted_address
