@@ -1,0 +1,38 @@
+[
+  {
+    "id": "hoof-hearted",
+    "image": "https://www.dummyimage.com/1170x600/000/fff.png",
+    "logo": "https://www.dummyimage.com/180x180/000/fff.png",
+    "name": "Hoof Hearted",
+    "rating": 3,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit consectetur dolor, sit amet porta lectus tincidunt id. Cras suscipit eleifend facilisis. Nullam vitae felis elit. Duis tristique dolor tempor tellus efficitur rutrum. Etiam enim orci, vehicula id mollis id, tincidunt eu turpis. Curabitur quis rhoncus sapien. Nam accumsan erat dui, vitae rhoncus nunc aliquam at. Aenean volutpat turpis at erat tincidunt, id ultrices sapien sodales. Donec ac scelerisque eros, eu ullamcorper urna.",
+    "website": "https://example.com/hoof-hearted"
+  },
+  {
+    "id": "seventh-son",
+    "image": "https://www.dummyimage.com/1170x600/000/fff.png",
+    "logo": "https://www.dummyimage.com/180x180/000/fff.png",
+    "name": "Seventh Son",
+    "rating": 4,
+    "description": "Sed lacinia mauris a urna tincidunt suscipit. Quisque eu eleifend dolor. Proin sodales feugiat risus et auctor. Sed sit amet iaculis libero. Vestibulum est ligula, vestibulum a varius ut, maximus ac eros. Vivamus laoreet, leo in vehicula convallis, erat dolor ultricies metus, sed elementum nulla neque id elit. Integer in commodo ante. Proin vitae nunc quis purus scelerisque mattis in ac sapien. Fusce nec sollicitudin nibh. Vivamus ornare vitae risus at pharetra. Ut in neque auctor, porttitor est sit amet, eleifend urna. Vivamus sollicitudin sodales risus, sit amet pharetra eros commodo at.",
+    "website": "https://example.com/seventh-son"
+  },
+  {
+    "id": "bud-dairy",
+    "image": "https://www.dummyimage.com/1170x600/000/fff.png",
+    "logo": "https://www.dummyimage.com/180x180/000/fff.png",
+    "name": "Bud Dairy",
+    "rating": 3,
+    "description": "Duis gravida ullamcorper risus sollicitudin suscipit. In in tincidunt velit. In ut congue massa. Sed efficitur interdum odio, id euismod magna facilisis eget. Etiam a quam mattis, mollis leo quis, pellentesque sem. Vivamus sit amet nisi leo. Vestibulum vitae orci sapien. Proin vel vestibulum mauris, non rutrum lectus. Curabitur id consequat quam. Cras fermentum, nisl in cursus euismod, quam diam condimentum ex, eget porta felis velit ac est. Aliquam tincidunt, ante a ultricies ullamcorper, arcu dui semper sem, luctus imperdiet lectus ligula at ipsum. Nullam id consequat mi. Vivamus non arcu sollicitudin urna suscipit dictum. Donec eu ultrices mauris, a commodo tellus.",
+    "website": "https://example.com/bud-dairy"
+  },
+  {
+    "id": "elevator",
+    "image": "https://www.dummyimage.com/1170x600/000/fff.png",
+    "logo": "https://www.dummyimage.com/180x180/000/fff.png",
+    "name": "Elevator Brewery",
+    "rating": 2,
+    "description": "Nulla consequat sit amet velit vel ornare. Duis semper venenatis tempus. Morbi at suscipit nulla. Sed eros odio, porttitor vel arcu eu, venenatis elementum orci. Nulla facilisi. Praesent vehicula purus elit, semper vehicula ipsum mattis ut. Praesent tincidunt fringilla sollicitudin. Maecenas tempor suscipit tellus quis tempus. Nullam a varius augue. Aenean in tincidunt felis. Mauris convallis, leo ut dapibus fringilla, metus quam sollicitudin mi, eget interdum diam orci id felis. Vivamus dignissim lorem lorem, et dignissim urna elementum nec.",
+    "website": "https://example.com/elevator"
+  }
+]

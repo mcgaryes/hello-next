@@ -1,28 +1,14 @@
 import '../styles/globals.css'
 import type {AppProps} from 'next/app'
-import Image from "next/image";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 export default function App({Component, pageProps}: AppProps) {
     return (
         <div>
-
+            <Header />
             <Component {...pageProps} />
-
-            <footer className={"footer"}>
-
-                <a href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Powered by{' '}
-                    <span className={"logo"}>
-                        <Image src="/vercel.svg"
-                               alt="Vercel Logo"
-                               width={72}
-                               height={16}/>
-                    </span>
-                </a>
-            </footer>
-
+            <Footer />
         </div>
     )
 }
