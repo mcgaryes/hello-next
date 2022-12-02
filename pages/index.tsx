@@ -1,17 +1,19 @@
 import Head from 'next/head'
-import Card from "../components/card";
-import {GetStaticProps, GetStaticPropsContext} from "next";
-import {Location} from "../models/location";
-// import locations from "../data/locations.json"
-// import {useEffect} from "react";
+import {GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType} from "next";
 import axios from "axios";
 import {LocationService} from "../services/location-service";
+import useTrackLocation from "../hooks/track-location";
+import {ArrowsUpDownIcon} from "@heroicons/react/24/outline/index";
+import {useEffect, useReducer} from "react";
+import LocationSection from "../components/location-section";
+import {AppActionType, appReducer} from "../reducers/app-reducer";
+
+const locationService = new LocationService()
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
 
-    const locationService = new LocationService()
 
-    const locations = await locationService.getLocationsNear("43201")
+    const locations = await locationService.getLocationsNear()
 
     return {
         props: {
@@ -21,7 +23,33 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 
 }
 
-export default function Home(props: GetStaticProps) {
+export default function Home({locations}: InferGetStaticPropsType<typeof getStaticProps>) {
+
+    const {handleTrackLocation} = useTrackLocation()
+
+    const [state, dispatch] = useReducer(appReducer, )
+
+    useEffect(() => {
+
+        console.log("get locations for latlong", state)
+
+        if (state.latLong !== "") {
+
+            (async () => {
+
+                let locationsResponse = await axios.get(`/api/locations?ll=${state.latLong}`);
+
+                console.log("dispatching locations", locationsResponse.data);
+
+                dispatch({
+                    type: AppActionType.SET_LOCATIONS,
+                    payload: locationsResponse.data
+                });
+
+            })()
+        }
+
+    }, [state])
 
     return (
 
@@ -32,26 +60,29 @@ export default function Home(props: GetStaticProps) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <main className={"min-h-screen max-w-7xl md:mx-auto p-6"}>
+            <main className={"min-h-screen max-w-7xl md:mx-auto px-6 pb-6 pt-12"}>
 
-                <h1 className={"text-2xl mb-5"}>Local</h1>
+                <div className={"flex flex-row justify-end mb-5 md:px-4 gap-x-2"}>
 
-                <div className={"relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"}>
-
-                    {
-                        // @ts-ignore
-                        props.locations?.map((location: Location) => (
-
-                            <Card key={location.id}
-                                  id={location.id}
-                                  rating={location.rating}
-                                  title={location.name}
-                                  image={location.images[0]}/>
-
-                        ))
-                    }
+                    <button
+                        className={"px-4 py-2 rounded-md drop-shadow bg-gray-100 inline-flex gap-x-2 items-center"}>
+                        Sort<ArrowsUpDownIcon width={20} height={20}/>
+                    </button>
+                    <button onClick={() => handleTrackLocation()}
+                            className={"px-4 py-2 rounded-md drop-shadow bg-gray-100"}>
+                        Search Near Me
+                    </button>
 
                 </div>
+
+                {
+                    state.locations.length > 0 &&
+                    <LocationSection title={state.locations[0].city}
+                                     locations={state.locations}
+                                     className={"mb-12"}/>
+                }
+
+                <LocationSection title="Ohio" locations={locations}/>
 
             </main>
 

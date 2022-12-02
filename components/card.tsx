@@ -24,20 +24,15 @@ export default function Card(props: CardProps) {
                  alt={props.title}
                  className={"rounded-lg w-full aspect-video object-cover object-left-top"}/>
 
-            {/*<LocationImage image={props.image}*/}
-            {/*               className={"rounded-lg"}*/}
-            {/*               width={700}*/}
-            {/*               height={50}/>*/}
-
             <div className={"grow"}/>
 
-            <div className={"flex flex-row justify-between"}>
+            <div className={"flex flex-row justify-between items-end gap-x-2"}>
 
-                <h1 className={"text-xl"}>
+                <p className={"text-xl flex-2"}>
                     {props.title}
-                </h1>
+                </p>
 
-                <div className={"text-lg flex-row"}>
+                <div className={"text-xl flex-shrink-0"}>
                     {props.rating} / 5
                 </div>
 
