@@ -1,8 +1,6 @@
 import Head from 'next/head'
-import Card from "../components/card";
-import {GetStaticProps} from "next";
 
-export default function Home(props: GetStaticProps) {
+export default function Home() {
 
     return (
 

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import {GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType} from "next";
+import {GetStaticProps, InferGetStaticPropsType} from "next";
 import axios from "axios";
 import {LocationService} from "../services/location-service";
 import useTrackLocation from "../hooks/track-location";
@@ -10,8 +10,7 @@ import {AppActionType, appReducer} from "../reducers/app-reducer";
 
 const locationService = new LocationService()
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
-
+export const getStaticProps: GetStaticProps = async () => {
 
     const locations = await locationService.getLocationsNear()
 
@@ -23,33 +22,30 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 
 }
 
-export default function Home({locations}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home(staticProps: InferGetStaticPropsType<typeof getStaticProps>) {
 
+    const {locations} = staticProps;
     const {handleTrackLocation} = useTrackLocation()
 
-    const [state, dispatch] = useReducer(appReducer, )
-
-    useEffect(() => {
-
-        console.log("get locations for latlong", state)
-
-        if (state.latLong !== "") {
-
-            (async () => {
-
-                let locationsResponse = await axios.get(`/api/locations?ll=${state.latLong}`);
-
-                console.log("dispatching locations", locationsResponse.data);
-
-                dispatch({
-                    type: AppActionType.SET_LOCATIONS,
-                    payload: locationsResponse.data
-                });
-
-            })()
-        }
-
-    }, [state])
+    // const [state, dispatch] = useReducer(appReducer, {latLong: "", locations: []})
+    //
+    // useEffect(() => {
+    //
+    //     if (state.latLong !== "") {
+    //
+    //         (async () => {
+    //
+    //             let locationsResponse = await axios.get(`/api/locations?ll=${state.latLong}`);
+    //
+    //             dispatch({
+    //                 type: AppActionType.SET_LOCATIONS,
+    //                 payload: locationsResponse.data
+    //             });
+    //
+    //         })()
+    //     }
+    //
+    // }, [state])
 
     return (
 
@@ -75,12 +71,12 @@ export default function Home({locations}: InferGetStaticPropsType<typeof getStat
 
                 </div>
 
-                {
-                    state.locations.length > 0 &&
-                    <LocationSection title={state.locations[0].city}
-                                     locations={state.locations}
-                                     className={"mb-12"}/>
-                }
+                {/*{*/}
+                {/*    state.locations.length > 0 &&*/}
+                {/*    <LocationSection title={state.locations[0].city}*/}
+                {/*                     locations={state.locations}*/}
+                {/*                     className={"mb-12"}/>*/}
+                {/*}*/}
 
                 <LocationSection title="Ohio" locations={locations}/>
 
