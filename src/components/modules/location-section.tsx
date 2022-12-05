@@ -1,6 +1,6 @@
-import {Location} from "../../types/location";
-import Card from "./card";
+import {Location} from "@/types/location";
 import {HTMLAttributes} from "react";
+import Card from "@/modules/card";
 
 interface LocationSectionProps extends HTMLAttributes<any> {
     title: string

@@ -1,7 +1,4 @@
-import Image from "next/image"
 import Link from "next/link";
-import {NoSymbolIcon} from "@heroicons/react/24/outline";
-import LocationImage from "./location-image";
 
 interface CardProps {
 
@@ -12,7 +9,7 @@ interface CardProps {
 
 }
 
-export default function Card(props: CardProps) {
+export default function Index(props: CardProps) {
 
     return (
 
