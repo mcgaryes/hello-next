@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {GetStaticProps, InferGetStaticPropsType} from "next";
 import {ArrowsUpDownIcon} from "@heroicons/react/24/outline/index";
-import locationService from "../services/location/location-service";
+import locationService from "@/services/location/service.ejs.t";
 import LocationSection from "@/modules/location-section";
 import {useContext} from "react";
 import {AuthActionType} from "@/context/auth-context/auth-actions";

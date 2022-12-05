@@ -5,7 +5,7 @@ import Head from "next/head";
 import {MapPinIcon} from '@heroicons/react/24/outline'
 import {useEffect, useState} from "react";
 import axios from "axios";
-import locationService from "../../services/location/location-service";
+import locationService from "@/services/location/service.ejs.t";
 
 export async function getStaticPaths(context: any) {
 
