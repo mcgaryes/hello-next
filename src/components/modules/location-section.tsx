@@ -1,4 +1,4 @@
-import {Location} from "../models/location";
+import {Location} from "../../types/location";
 import Card from "./card";
 import {HTMLAttributes} from "react";
 

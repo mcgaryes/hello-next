@@ -1,4 +1,4 @@
-import {Location} from "../models/location";
+import {Location} from "@/types/location";
 import axios from "axios";
 
 export class LocationService {
@@ -22,26 +22,26 @@ export class LocationService {
 
         return axiosResponse.data.results.map((result: any) => {
 
-            let images: string[] = result.photos.map((photo: any) => {
+            let images: string[] = result.photos?.map((photo: any) => {
                 let prefix = photo.prefix
                 let suffix = photo.suffix
                 let size = `${photo.width}x${photo.height}`
                 return `${prefix}${size}${suffix}`
-            })
+            }) ?? []
 
             if (images.length <= 0) {
                 images = ["/images/location-fallback.jpg"]
             }
 
             return {
-                id: result.fsq_id,
+                id: result.fsq_id ?? "",
                 website: result.website ?? "",
-                name: result.name,
+                name: result.name ?? "",
                 images,
                 description: result.description ?? "No description.",
                 rating: Math.round((result.rating ?? 0) / 2),
-                address: result.location.formatted_address,
-                city: result.location.dma
+                address: result.location?.formatted_address ?? "",
+                city: result.location?.dma ?? ""
             } as Location
 
         })
@@ -49,3 +49,5 @@ export class LocationService {
     }
 
 }
+
+export default new LocationService()

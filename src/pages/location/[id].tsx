@@ -1,17 +1,15 @@
 import {useRouter} from "next/router";
 import {GetStaticProps} from "next";
-import {Location, locationFactory} from "../../models/location";
+import {Location, locationFactory} from "@/types/location";
 import Head from "next/head";
-import {LocationService} from "../../services/location-service";
 import {MapPinIcon} from '@heroicons/react/24/outline'
 import {useEffect, useState} from "react";
-
-const locationService = new LocationService()
+import axios from "axios";
+import locationService from "../../services/location/location-service";
 
 export async function getStaticPaths(context: any) {
 
-    const locations = await locationService.getLocationsNear()
-
+    let locations = await locationService.getLocationsNear();
     const paths = locations.map((location: Location) => {
         return {
             params: {
@@ -29,7 +27,7 @@ export async function getStaticPaths(context: any) {
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
 
-    const locations = await locationService.getLocationsNear()
+    let locations = await locationService.getLocationsNear();
     const location = locations.find((location: Location) => context.params.id === location.id)
 
     return {

@@ -1,5 +1,4 @@
 import {useReducer, useState} from "react";
-import {AppActionType, appReducer} from "../reducers/app-reducer";
 
 const useTrackLocation = () => {
 
