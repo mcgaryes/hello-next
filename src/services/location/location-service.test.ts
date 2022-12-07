@@ -1,7 +1,7 @@
-import locationService from "@/services/location/location-service";
 import axios from "axios";
 
 import MockAdapter from 'axios-mock-adapter';
+import {getLocationsNear} from "@/services/location/location-service";
 
 describe("location service", () => {
 
@@ -20,7 +20,7 @@ describe("location service", () => {
 
         mock.onGet(url).reply(200, data);
 
-        let locations = await locationService.getLocationsNear("0,0")
+        let locations = await getLocationsNear("0,0")
 
         expect(locations.length).toEqual(0);
 
@@ -31,7 +31,7 @@ describe("location service", () => {
         const data = {results: [{}]}; // empty location object
         mock.onGet(url).reply(200, data);
 
-        let locations = await locationService.getLocationsNear("0,0")
+        let locations = await getLocationsNear("0,0")
         let location = locations[0];
 
         expect(location.id).toEqual("");
@@ -79,7 +79,7 @@ describe("location service", () => {
         const data = {results: [given]}; // empty location object
         mock.onGet(url).reply(200, data);
 
-        let locations = await locationService.getLocationsNear("0,0")
+        let locations = await getLocationsNear("0,0")
         let location = locations[0];
 
         expect(location).toBeDefined();

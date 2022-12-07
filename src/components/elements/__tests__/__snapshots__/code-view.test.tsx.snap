@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders code-view unchanged 1`] = `
+<div>
+  <div
+    class="overflow-scroll rounded-2xl border-gray-200 border bg-gray-50 p-8 text-sm"
+  >
+    <pre />
+  </div>
+</div>
+`;

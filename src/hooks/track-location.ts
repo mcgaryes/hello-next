@@ -1,19 +1,21 @@
-import {useReducer, useState} from "react";
+import {useContext, useReducer, useState} from "react";
+import {LocationContext} from "@/context/location/location-context";
+import {LocationActionType} from "@/context/location/location-actions";
 
 const useTrackLocation = () => {
 
     const [locationErrorMsg, setLocationErrorMsg] = useState("");
-    // const [state, dispatch] = useReducer(appReducer, {latLong: "", locations: []})
+    const {state, dispatch} = useContext(LocationContext);
 
     const success = (position: GeolocationPosition) => {
 
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        // dispatch({
-        //     type: AppActionType.SET_LAT_LONG,
-        //     payload: `${latitude},${longitude}`
-        // });
+        dispatch({
+            type: LocationActionType.setLatLong,
+            payload: `${latitude},${longitude}`
+        });
 
         setLocationErrorMsg("");
     };
@@ -32,10 +34,11 @@ const useTrackLocation = () => {
     };
 
     return {
-        latLong: "", // state.latLong,
+        latLong: state.latLong,
         handleTrackLocation,
         locationErrorMsg,
     };
+
 };
 
 export default useTrackLocation;
