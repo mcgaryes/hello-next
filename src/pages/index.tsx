@@ -8,6 +8,7 @@ import {LocationContext} from "@/context/location/location-context";
 import {LocationActionType} from "@/context/location/location-actions";
 import useTrackLocation from "@/hooks/track-location";
 import {getLocationsNear} from "@/services/location/location-service";
+import {logger} from "@/utilities/logger";
 
 export const getStaticProps: GetStaticProps = async () => {
 
@@ -29,6 +30,7 @@ export default function Home(staticProps: InferGetStaticPropsType<typeof getStat
     const {latLong, handleTrackLocation} = useTrackLocation();
 
     useEffect( () => {
+
 
         console.log(locationContext.state.latLong);
 

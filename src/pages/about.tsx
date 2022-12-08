@@ -7,8 +7,13 @@ import CodeView from "@/elements/code-view";
 import {withIronSessionSsr} from 'iron-session/next'
 import {sessionOptions} from "@/services/session/session-service";
 import {User} from "@/types/user";
+import {logger} from "@/utilities/logger";
+import {useEffect} from "react";
+import {useInterval} from "usehooks-ts";
 
 export const getServerSideProps = withIronSessionSsr(async function ({req, res}) {
+
+    logger.debug("Get server side props");
 
     const {user} = req.session
 
