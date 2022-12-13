@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders simple-tab unchanged 1`] = `
+<div>
+  <div
+    aria-orientation="horizontal"
+    role="tablist"
+  >
+    <button
+      aria-selected="true"
+      class="bg-blue-500 text-white px-4 py-2"
+      data-headlessui-state="selected"
+      id="headlessui-tabs-tab-:r0:"
+      role="tab"
+      tabindex="0"
+      type="button"
+    >
+      Tab
+    </button>
+  </div>
+</div>
+`;

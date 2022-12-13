@@ -1,19 +1,18 @@
 import Head from 'next/head'
 import Modal from "@/modules/modal";
-import {GetServerSidePropsContext, InferGetServerSidePropsType} from "next";
-import {delay} from "@/utilities/delay";
+import {InferGetServerSidePropsType} from "next";
 import {getLocationsNear} from "@/services/location/location-service";
 import CodeView from "@/elements/code-view";
 import {withIronSessionSsr} from 'iron-session/next'
 import {sessionOptions} from "@/services/session/session-service";
 import {User} from "@/types/user";
-import {logger} from "@/utilities/logger";
-import {useEffect} from "react";
-import {useInterval} from "usehooks-ts";
+import {Tab} from "@headlessui/react"
+import {Fragment, useMemo} from "react";
+import classNames from "classnames";
+import SimpleTab from "@/elements/simple-tab";
+import SimpleTabPanel from "@/elements/simple-tab-panel";
 
 export const getServerSideProps = withIronSessionSsr(async function ({req, res}) {
-
-    logger.debug("Get server side props");
 
     const {user} = req.session
 
@@ -43,6 +42,10 @@ export const getServerSideProps = withIronSessionSsr(async function ({req, res})
 
 export default function About(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
+    const tabs = useMemo(() => {
+        return [["Tab 1", "Content 1"], ["Tab 2", "Content 2"], ["Tab 3", "Content 3"]]
+    }, [])
+
     return (
 
         <div className={"min-h-screen"}>
@@ -58,7 +61,39 @@ export default function About(props: InferGetServerSidePropsType<typeof getServe
 
                 <CodeView value={props.locations[0]}/>
 
-                <Modal/>
+
+                <br/>
+
+                <Tab.Group>
+
+                    <Tab.List as={"div"} className={"flex flex-row mb-4"}>
+                        {
+                            tabs.map(tab =>
+                                <SimpleTab key={tab[0]}>{tab[0]}</SimpleTab>
+                            )
+                        }
+                    </Tab.List>
+
+                    <Tab.Panels>
+                        {
+                            tabs.map(tab =>
+                                <SimpleTabPanel key={tab[1]}>
+
+                                    {{
+                                        "Content 1": <Modal title={"Modal Title"}
+                                                            body={"This is the copy that will make up the body of the modal"}
+                                                            cta={"Call to action"}/>,
+                                        "Content 2": <Modal title={"Modal Title"} cta={"Call to action"}>Testing one two
+                                            three</Modal>,
+                                        "Content 3": "Content 3",
+                                    }[tab[1]]}
+
+                                </SimpleTabPanel>
+                            )
+                        }
+                    </Tab.Panels>
+
+                </Tab.Group>
 
             </main>
 
