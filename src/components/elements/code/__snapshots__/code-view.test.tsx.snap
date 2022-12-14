@@ -5,7 +5,9 @@ exports[`Renders code-view unchanged 1`] = `
   <div
     class="overflow-scroll rounded-2xl border-gray-200 border bg-gray-50 p-8 text-sm"
   >
-    <pre />
+    <pre>
+      {}
+    </pre>
   </div>
 </div>
 `;

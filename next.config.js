@@ -11,14 +11,15 @@ const nextConfig = {
             protocol: 'https',
             hostname: '*.dummyimage.com',
             pathname: '/**'
-        },{
+        }, {
             protocol: 'https',
             hostname: '*.unsplash.com',
             pathname: '/**'
         }]
 
 
-    }
+    },
+    pageExtensions: ['page.tsx', 'page.ts']
 }
 
 module.exports = nextConfig

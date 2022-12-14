@@ -1,6 +1,6 @@
 import {Fragment, HTMLAttributes, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react"
-import PrimaryButton from "@/elements/primary-button";
+import PrimaryButton from "@/elements/primary-button/primary-button";
 
 interface ModalProps extends HTMLAttributes<any> {
     title: string

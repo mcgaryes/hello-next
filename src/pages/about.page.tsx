@@ -2,15 +2,14 @@ import Head from 'next/head'
 import Modal from "@/modules/modal";
 import {InferGetServerSidePropsType} from "next";
 import {getLocationsNear} from "@/services/location/location-service";
-import CodeView from "@/elements/code-view";
 import {withIronSessionSsr} from 'iron-session/next'
 import {sessionOptions} from "@/services/session/session-service";
 import {User} from "@/types/user";
 import {Tab} from "@headlessui/react"
 import {Fragment, useMemo} from "react";
-import classNames from "classnames";
-import SimpleTab from "@/elements/simple-tab";
-import SimpleTabPanel from "@/elements/simple-tab-panel";
+import CodeView from "@/elements/code/code-view";
+import SimpleTab from "@/elements/simple-tab/simple-tab";
+import SimpleTabPanel from "@/elements/simple-tab-panel/simple-tab-panel";
 
 export const getServerSideProps = withIronSessionSsr(async function ({req, res}) {
 

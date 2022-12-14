@@ -8,14 +8,14 @@ exports[`Renders simple-tab unchanged 1`] = `
   >
     <button
       aria-selected="true"
-      class="bg-blue-500 text-white px-4 py-2"
+      class="bg-blue-500 text-white first:rounded-l-lg last:rounded-r-lg flex-grow h-8 border-r-2 last:border-none last:rounded-r-lg flex-grow h-8"
       data-headlessui-state="selected"
       id="headlessui-tabs-tab-:r0:"
       role="tab"
       tabindex="0"
       type="button"
     >
-      Tab
+      Tab 1
     </button>
   </div>
 </div>
