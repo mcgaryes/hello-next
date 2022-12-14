@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders simple-text unchanged 1`] = `
+<div>
+  <div>
+    SimpleText
+  </div>
+</div>
+`;
