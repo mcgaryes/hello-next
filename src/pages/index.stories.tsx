@@ -6,4 +6,8 @@ export default {
     component: Home,
 };
 
-export const HomePage = () => <Home staticProps={{locations: [locationFactory()]}}/>
+export const HomePage = () => <Home staticProps={{
+    props: {
+        locations: [locationFactory()]
+    }
+}}/>
