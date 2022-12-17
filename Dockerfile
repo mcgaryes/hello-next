@@ -1,6 +1,9 @@
 FROM node:alpine
-WORKDIR /app
-COPY package.json ./
+WORKDIR /
+COPY package*.json ./
+COPY ./scripts/post-install.js ./scripts/post-install.js
 RUN npm install
-COPY ./ ./
+COPY . .
+RUN npm run build
+EXPOSE 80
 CMD ["npm","start"]
