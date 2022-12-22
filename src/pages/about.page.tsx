@@ -11,35 +11,7 @@ import CodeView from "@/elements/code/code-view";
 import SimpleTab from "@/elements/simple-tab/simple-tab";
 import SimpleTabPanel from "@/elements/simple-tab-panel/simple-tab-panel";
 
-export const getServerSideProps = withIronSessionSsr(async function ({req, res}) {
-
-    const {user} = req.session
-
-    if (user === undefined) {
-        res.setHeader('location', '/login')
-        res.statusCode = 302
-        res.end()
-        return {
-            props: {
-                user: {isLoggedIn: false, login: '', avatarUrl: ''} as User,
-                locations: []
-            },
-        }
-    }
-
-    let locations = await getLocationsNear()
-
-    // the page will not render until the above finishes
-    return {
-        props: {
-            user: req.session.user,
-            locations
-        }, // Will be passed to the page component as props
-    }
-
-}, sessionOptions)
-
-export default function About(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function About() {
 
     const tabs = useMemo(() => {
         return [["Tab 1", "Content 1"], ["Tab 2", "Content 2"], ["Tab 3", "Content 3"]]
@@ -57,9 +29,6 @@ export default function About(props: InferGetServerSidePropsType<typeof getServe
             <main className={"max-w-7xl md:mx-auto p-6"}>
 
                 <h1 className={"text-2xl"}>About</h1>
-
-                <CodeView value={props.locations[0]}/>
-
 
                 <br/>
 
