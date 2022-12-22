@@ -8,6 +8,7 @@ import {LocationContext} from "@/context/location/location-context";
 import {LocationActionType} from "@/context/location/location-actions";
 import useTrackLocation from "@/hooks/track-location";
 import {getLocationsNear} from "@/services/location/location-service";
+import {withAuthenticator} from "@aws-amplify/ui-react";
 
 export const getStaticProps: GetStaticProps = async () => {
 
@@ -21,17 +22,14 @@ export const getStaticProps: GetStaticProps = async () => {
 
 }
 
-export default function Home(staticProps: InferGetStaticPropsType<typeof getStaticProps>) {
+function Home(staticProps: InferGetStaticPropsType<typeof getStaticProps>) {
 
     const {locations} = staticProps;
     const locationContext = useContext(LocationContext);
     const {state, dispatch} = useContext(AuthContext);
     const {latLong, handleTrackLocation} = useTrackLocation();
 
-    useEffect( () => {
-
-
-        console.log(locationContext.state.latLong);
+    useEffect(() => {
 
         (async () => {
             if (locationContext.state.latLong != "" && locationContext.state.locations.length == 0) {
@@ -84,3 +82,5 @@ export default function Home(staticProps: InferGetStaticPropsType<typeof getStat
         </div>
     )
 }
+
+export default withAuthenticator(Home)

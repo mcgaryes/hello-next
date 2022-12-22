@@ -1,22 +1,24 @@
 import '../styles/globals.css'
-import type {AppProps} from 'next/app'
-import {AuthProvider} from "@/context/auth-context/auth-provider";
-import {ThemeProvider} from "@/context/theme/theme-provider";
-import {MainLayout} from "@/layouts/main-layout";
-import {LocationProvider} from "@/context/location/location-provider";
+import type {AppProps, NextWebVitalsMetric} from 'next/app'
 import '@tremor/react/dist/esm/tremor.css';
+import {Amplify} from "aws-amplify";
+import awsConfig from "../aws-exports"
+import '@aws-amplify/ui-react/styles.css';
+import {ApolloProvider} from "@apollo/client";
+import client from "../apollo-client";
+import {logger} from "@/utilities/logger";
+
+Amplify.configure({...awsConfig, ssr: true})
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+    logger.debug(metric)
+}
 
 export default function App({Component, pageProps}: AppProps) {
 
     return (
-        <LocationProvider>
-            <ThemeProvider>
-                <AuthProvider>
-                    <MainLayout>
-                        <Component {...pageProps} />
-                    </MainLayout>
-                </AuthProvider>
-            </ThemeProvider>
-        </LocationProvider>
+        <ApolloProvider client={client}>
+            <Component {...pageProps} />
+        </ApolloProvider>
     )
 }

@@ -14,13 +14,17 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.3",
+    "@aws-amplify/ui-react": "^4.2.1",
     "@headlessui/react": "1.7.4",
     "@heroicons/react": "2.0.13",
     "@tailwindcss/line-clamp": "0.4.2",
     "@tremor/react": "^1.2.2",
     "autoprefixer": "10.4.13",
+    "aws-amplify": "^5.0.7",
     "axios": "1.2.0",
     "classnames": "^2.3.2",
+    "graphql": "^16.6.0",
     "iron-session": "^6.3.1",
     "next": "13.0.4",
     "postcss": "8.4.19",
