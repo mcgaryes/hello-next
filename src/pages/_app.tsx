@@ -14,11 +14,14 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
     logger.debug(metric)
 }
 
-export default function App({Component, pageProps}: AppProps) {
+function App({Component, pageProps}: AppProps) {
 
     return (
         <ApolloProvider client={client}>
             <Component {...pageProps} />
         </ApolloProvider>
     )
+
 }
+
+export default App;

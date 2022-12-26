@@ -1,21 +1,50 @@
 import Head from 'next/head'
 import Modal from "@/modules/modal";
-import {InferGetServerSidePropsType} from "next";
-import {getLocationsNear} from "@/services/location/location-service";
-import {withIronSessionSsr} from 'iron-session/next'
-import {sessionOptions} from "@/services/session/session-service";
-import {User} from "@/types/user";
+import {GetServerSideProps, InferGetServerSidePropsType} from "next";
 import {Tab} from "@headlessui/react"
-import {Fragment, useMemo} from "react";
-import CodeView from "@/elements/code/code-view";
+import {useMemo} from "react";
 import SimpleTab from "@/elements/simple-tab/simple-tab";
 import SimpleTabPanel from "@/elements/simple-tab-panel/simple-tab-panel";
+import {withSSRContext} from "aws-amplify";
+import {logger} from "@/utilities/logger";
 
-export default function About() {
+export const getServerSideProps: GetServerSideProps<any> = async (context) => {
+
+    const {Auth} = withSSRContext(context)
+
+    try {
+
+        const user = await Auth.currentAuthenticatedUser()
+
+        logger.debug(user);
+
+        return {
+            props: {
+                authenticated: true
+            }
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        return {
+            props: {
+                authenticated: false
+            }
+        }
+    }
+}
+
+function About(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
     const tabs = useMemo(() => {
         return [["Tab 1", "Content 1"], ["Tab 2", "Content 2"], ["Tab 3", "Content 3"]]
     }, [])
+
+    if (!props.authenticated) {
+        return <div>Not Authenticated</div>
+    }
 
     return (
 
@@ -66,5 +95,8 @@ export default function About() {
             </main>
 
         </div>
+
     )
 }
+
+export default About;

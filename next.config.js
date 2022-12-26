@@ -16,10 +16,7 @@ const nextConfig = {
             hostname: '*.unsplash.com',
             pathname: '/**'
         }]
-
-
-    },
-    pageExtensions: ['page.tsx', 'page.ts', "api.ts"]
+    }
 }
 
 module.exports = nextConfig

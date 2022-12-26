@@ -1,10 +1,22 @@
 import Head from 'next/head'
-import {BarChart, ButtonInline, Card, Col, ColGrid, DonutChart, Footer, LineChart, Title, SelectBox, SelectBoxItem} from "@tremor/react";
+import {
+    BarChart,
+    ButtonInline,
+    Card,
+    Col,
+    ColGrid,
+    DonutChart,
+    Footer,
+    LineChart,
+    SelectBox,
+    SelectBoxItem,
+    Title
+} from "@tremor/react";
 import {ArrowRightIcon} from "@heroicons/react/24/outline/index";
 
 import {useMemo} from "react";
 
-export default function DashboardTremor() {
+function DashboardTremor() {
 
     const chartdata = useMemo(() => [
         {
@@ -198,3 +210,5 @@ export default function DashboardTremor() {
         </div>
     )
 }
+
+export default DashboardTremor;

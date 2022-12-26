@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import {withAuthenticator} from "@aws-amplify/ui-react";
 import Link from "next/link";
+import {WithAuthenticatorProps} from "@aws-amplify/ui-react/dist/types/components/Authenticator/withAuthenticator";
 
-function Home() {
+function Home(props: WithAuthenticatorProps) {
 
     return (
 
@@ -17,14 +18,16 @@ function Home() {
 
                 <h1 className={"text-2xl"}>Page Links</h1>
                 <br/>
+
                 <ul>
                     <li><Link href={"/about"}>About</Link></li>
-                    <li><Link href={"/charts"}>Charts</Link></li>
                     <li><Link href={"/dashboard-tremor"}>Tremor Example</Link></li>
                     <li><Link href={"/graphql-csr"}>GraphQL (CSR)</Link></li>
                     <li><Link href={"/graphql-ssr"}>GraphQL (SSR)</Link></li>
                     <li><Link href={"/graphql-static"}>GraphQL (Static)</Link></li>
                 </ul>
+                <br/> <br/>
+                <button onClick={props.signOut}>Sign Out</button>
 
             </main>
 

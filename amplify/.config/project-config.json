@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "amipligyauthnextjs",
+  "projectName": "hellonext",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
@@ -11,7 +11,7 @@
       "SourceDir": "src",
       "DistributionDir": ".next",
       "BuildCommand": "npm run build",
-      "StartCommand": "npm run dev"
+      "StartCommand": "npm start"
     }
   }
 }
