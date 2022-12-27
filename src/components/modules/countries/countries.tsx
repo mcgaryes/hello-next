@@ -5,16 +5,6 @@ import gql from "graphql-tag";
 interface CountriesProps extends HTMLAttributes<any> {
 }
 
-const QUERY = gql`
-  query Countries {
-    countries {
-      code
-      name
-      emoji
-    }
-  }
-`;
-
 export default function Countries(props: CountriesProps) {
 
     const {data, loading, error} = useQuery(QUERY);

@@ -2,6 +2,8 @@
 
 exports[`Renders foo-bar unchanged 1`] = `
 <div>
-  <div />
+  <div>
+    foobar
+  </div>
 </div>
 `;
