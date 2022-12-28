@@ -2,6 +2,17 @@ import {HTMLAttributes} from "react";
 import {useQuery} from "@apollo/client";
 import gql from "graphql-tag";
 
+const QUERY = gql`
+  query Countries {
+    countries {
+      code
+      name
+      emoji
+    }
+  }
+`;
+
+
 interface CountriesProps extends HTMLAttributes<any> {
 }
 
