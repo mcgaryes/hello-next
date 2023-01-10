@@ -34,7 +34,11 @@
         "amipligyauthnextjs": {}
       },
       "function": {
-        "hellonext008ffc7c": {}
+        "hellonext008ffc7c": {
+          "deploymentBucketName": "amplify-amipligyauthnextjs-staging-180009-deployment",
+          "s3Key": "amplify-builds/hellonext008ffc7c-51346732713165516f33-build.zip"
+        },
+        "pretokengeneration": {}
       }
     }
   }
