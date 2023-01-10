@@ -26,5 +26,13 @@
         ]
       }
     }
+  },
+  "function": {
+    "hellonext008ffc7c": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
+    }
   }
 }
